@@ -26,6 +26,39 @@ var plugin = {
       plugin.touch.x = e.touches[0].clientX;
       plugin.touch.y = e.touches[0].clientY;
 
+      var landscapeDirection = false;
+
+      if( 'orientation' in window ) {
+        // Mobile
+        if (window.orientation == 90) {
+          landscapeDirection = 'left';
+        } else if (window.orientation == -90) {
+          landscapeDirection = 'right';
+        }
+      } else if ( 'orientation' in window.screen ) {
+        // Webkit
+        if( screen.orientation.type === 'landscape-primary') {
+          landscapeDirection = 'left';
+        } else if( screen.orientation.type === 'landscape-secondary') {
+          landscapeDirection = 'right';
+        }
+      } else if( 'mozOrientation' in window.screen ) {
+        // Firefox
+        if( screen.mozOrientation === 'landscape-primary') {
+          landscapeDirection = 'left';
+        } else if( screen.mozOrientation === 'landscape-secondary') {
+          landscapeDirection = 'right';
+        }
+      }
+
+      if (landscapeDirection) {
+        if (plugin.screen.x < plugin.screen.y) {
+          var temp = plugin.screen.x;
+          plugin.screen.x = plugin.screen.y;
+          plugin.screen.y = temp;
+        }
+      }
+
       if (plugin.touch.x >= 0 && plugin.touch.x < EDGE_WIDTH) {
         plugin.vm.isLeft = true;
         return
@@ -53,7 +86,7 @@ var plugin = {
 
       // no need to reset
       if (!plugin.vm.isLeft) { return }
-      
+
       // Reset Left after touchend + 500ms
       if (plugin.timerL) { clearTimeout(plugin.timerL); }
       plugin.timerL = setTimeout(function () {
