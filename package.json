@@ -1,6 +1,6 @@
 {
   "name": "vue-edge-check",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Check Browser Edge Reactively",
   "main": "dist/vue-edge-check.common.js",
   "module": "dist/vue-edge-check.es.js",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gu-fan/vue-edge-check.git"
+    "url": "git+https://github.com/yossoon/vue-edge-check"
   },
   "keywords": [
     "vue",
@@ -21,9 +21,9 @@
   "author": "gu.fan@qq.com",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/gu-fan/vue-edge-check/issues"
+    "url": "https://github.com/yossoon/vue-edge-check/issues"
   },
-  "homepage": "https://github.com/gu-fan/vue-edge-check#readme",
+  "homepage": "https://github.com/yossoon/vue-edge-check#readme",
   "devDependencies": {
     "rollup": "^0.54.0",
     "rollup-plugin-buble": "^0.18.0",
